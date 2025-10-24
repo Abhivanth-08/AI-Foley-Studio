@@ -3,12 +3,15 @@ const Footer = () => {
     <footer className="relative py-16 px-4 sm:px-6 lg:px-8 border-t border-border">
       <div className="container max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-gradient">AI Foley Studio</h3>
-            <p className="text-muted-foreground">
-              Revolutionary AI-powered audio syncing for the future of cinema production.
-            </p>
+          {/* Brand (logo) */}
+          <div className="space-y-4 flex items-center gap-4">
+            <img src="/logo.png" alt="AI Foley Studio" className="w-28 h-auto" />
+            <div>
+              <h3 className="text-2xl font-bold text-gradient">AI Foley Studio</h3>
+              <p className="text-muted-foreground">
+                Revolutionary AI-powered audio syncing for the future of cinema production.
+              </p>
+            </div>
           </div>
 
           {/* Technology */}
@@ -35,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-border text-center text-muted-foreground">
-          <p>© 2024 AI Foley Studio. Revolutionizing foley audio production.</p>
+          <p>© 2025 AI Foley Studio. Revolutionizing foley audio production.</p>
         </div>
       </div>
     </footer>

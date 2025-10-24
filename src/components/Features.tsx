@@ -13,13 +13,13 @@ const Features = () => {
       icon: Target,
       title: "Pixel-Perfect Sync",
       description: "Mathematical precision using MediaPipe heel tracking ensures every footstep is perfectly timed.",
-      stats: "±5ms accuracy"
+      stats: "Precision timing"
     },
     {
       icon: Cpu,
       title: "Smart Surface Detection",
       description: "Advanced LLM analyzes environments to match the perfect audio for concrete, wood, gravel, and 100+ surfaces.",
-      stats: "100+ surface types"
+      stats: "Autonomous surface selection"
     },
     {
       icon: Gauge,

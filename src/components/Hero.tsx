@@ -57,12 +57,9 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-16 max-w-3xl mx-auto">
+          {/* Stats (simplified) */}
+          <div className="grid grid-cols-1 gap-8 pt-16 max-w-3xl mx-auto">
             {[
-              { value: "99%", label: "Accuracy" },
-              { value: "<2s", label: "Processing Time" },
-              { value: "100+", label: "Surface Types" }
             ].map((stat, i) => (
               <div 
                 key={i} 

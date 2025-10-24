@@ -315,6 +315,7 @@ const VideoUpload = ({ onBack }: VideoUploadProps) => {
               <p className="text-sm text-muted-foreground">
                 Supports MP4, MOV, AVI formats
               </p>
+              <p className="text-sm text-muted-foreground mt-2">Surface selection: <span className="font-semibold text-foreground">Autonomous</span></p>
             </label>
           </div>
 

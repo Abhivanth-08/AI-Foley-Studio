@@ -85,13 +85,11 @@ const Demo = () => {
           <LiveStreaming onBack={handleBack} />
         )}
 
-        {/* Features Grid */}
+        {/* Features Grid (simplified) */}
         {mode === 'selection' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mt-12">
             {[
-              { title: "Instant Processing", desc: "Results in under 2 seconds" },
-              { title: "High Accuracy", desc: "99% footstep detection rate" },
-              { title: "Any Surface", desc: "100+ surface types supported" }
+              { title: "Autonomous Surface Selection", desc: "Automatically selects the correct surface profile for realistic footstep audio" }
             ].map((feature, i) => (
               <Card 
                 key={i} 
