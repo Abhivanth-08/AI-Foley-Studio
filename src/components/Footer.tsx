@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-border text-center text-muted-foreground">
-          <p>© 2025 AI Foley Studio. Revolutionizing foley audio production.</p>
+          <p>© 2025 AI Foley Studio. By Abhivanth R</p>
         </div>
       </div>
     </footer>
