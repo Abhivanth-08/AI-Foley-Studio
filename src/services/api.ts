@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://abhi02072005-ai-foley-studio-backend.hf.space';
 
 export interface ProcessingConfig {
   sensitivity?: 'low' | 'medium' | 'high';
