@@ -138,7 +138,7 @@ const TechnicalDetails = () => {
                   <Card className="bg-secondary/30 border-border p-6">
                     <h5 className="text-lg font-semibold text-primary mb-4">LLM Vision Service</h5>
                     <div className="space-y-2 text-sm">
-                      <p className="text-foreground font-medium">GPT-4 Vision</p>
+                      <p className="text-foreground font-medium">LLAMA Vision</p>
                       <p className="text-foreground font-medium">Frame Analysis</p>
                       <p className="text-foreground font-medium">Surface Detection</p>
                       <p className="text-foreground font-medium">JSON Output</p>
@@ -156,9 +156,9 @@ const TechnicalDetails = () => {
                   </Card>
 
                   <Card className="bg-secondary/30 border-border p-6">
-                    <h5 className="text-lg font-semibold text-primary mb-4">YouTube Fetcher</h5>
+                    <h5 className="text-lg font-semibold text-primary mb-4">LLM Based Audio Fetcher</h5>
                     <div className="space-y-2 text-sm">
-                      <p className="text-foreground font-medium">yt-dlp Library</p>
+                      <p className="text-foreground font-medium">LLM Integration to get audio array</p>
                       <p className="text-foreground font-medium">Search & Filter</p>
                       <p className="text-foreground font-medium">Audio Download</p>
                       <p className="text-foreground font-medium">24h Cache</p>
@@ -189,15 +189,12 @@ const TechnicalDetails = () => {
               "YOLOv8",
               "MediaPipe",
               "FFmpeg",
-              "GPT-4 Vision",
-              "yt-dlp",
+              "LLAMA Vision",
               "OpenCV",
               "NumPy",
               "Pydub",
               "FastAPI",
-              "Redis Cache",
               "Docker",
-              "Kubernetes"
             ].map((tech, i) => (
               <span
                 key={i}
