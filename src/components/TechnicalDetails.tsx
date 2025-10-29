@@ -106,7 +106,7 @@ const TechnicalDetails = () => {
                   {[
                     { step: "1. Video Ingestion", items: ["Multipart Upload", "4K Support", "FFmpeg Decoding"] },
                     { step: "2. Frame Analysis", items: ["Parallel Processing", "LLM Vision Model", "Context Extraction"] },
-                    { step: "3. Audio Retrieval", items: ["YouTube API Search", "yt-dlp Download", "Format Conversion"] },
+                    { step: "3. Audio Retrieval", items: ["Audio Array", "Save the Array as .wav", "Audio processing"] },
                     { step: "4. Synchronization", items: ["FFmpeg Slicing", "Sub-frame Precision", "Video Rendering"] }
                   ].map((item, i) => (
                     <div key={i} className="relative">
