@@ -171,7 +171,7 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
       baseAudioRef.current = new Audio('/sounds/footstep.mp3');
       // Use fallback if local file doesn't exist
       baseAudioRef.current.onerror = () => {
-        const fallbackUrl = "https://www.soundjay.com/footsteps/sounds/footsteps-4.mp3";
+        const fallbackUrl = "https://actions.google.com/sounds/v1/foley/footstep_on_wood.ogg";
         if (baseAudioRef.current && baseAudioRef.current.src !== fallbackUrl) {
           console.log("Local audio not found, falling back to external URL.");
           baseAudioRef.current.src = fallbackUrl;
@@ -226,19 +226,21 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
       console.log('[LiveStreaming] Set isLive to true');
       
       // Start frame detection loop
+      let isProcessing = false;
       detectionIntervalRef.current = setInterval(async () => {
-        if (!videoRef.current || !canvasRef.current || !sessionId) return;
+        if (!videoRef.current || !canvasRef.current || !sessionId || isProcessing) return;
         
+        isProcessing = true;
         try {
-          // Capture current frame from video
+          // Capture current frame from video (DOWNSCALED FOR SPEED)
           const captureCanvas = document.createElement('canvas');
-          captureCanvas.width = videoRef.current.videoWidth;
-          captureCanvas.height = videoRef.current.videoHeight;
+          captureCanvas.width = 640;
+          captureCanvas.height = 360;
           const captureCtx = captureCanvas.getContext('2d');
-          captureCtx?.drawImage(videoRef.current, 0, 0);
+          captureCtx?.drawImage(videoRef.current, 0, 0, 640, 360);
           
           const blob = await new Promise<Blob>((resolve) => {
-            captureCanvas.toBlob((b) => resolve(b!), 'image/jpeg', 0.8);
+            captureCanvas.toBlob((b) => resolve(b!), 'image/jpeg', 0.5); // Lower quality = faster upload
           });
           
           // Detect footstep and get annotated frame
@@ -287,8 +289,10 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
           }
         } catch (error) {
           console.error('Detection error:', error);
+        } finally {
+          isProcessing = false;
         }
-      }, 500); // Check every 500ms
+      }, 150); // Check every 150ms for much smoother video
       
     } catch (error: any) {
       toast({
