@@ -26,6 +26,7 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const detectionIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const baseAudioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
   const handleCaptureFrame = async () => {
@@ -164,6 +165,30 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
       return;
     }
     
+    // --- AUDIO INITIALIZATION ---
+    // Initialize audio element during user gesture to comply with auto-play policies
+    if (!baseAudioRef.current) {
+      baseAudioRef.current = new Audio('/sounds/footstep.mp3');
+      // Use fallback if local file doesn't exist
+      baseAudioRef.current.onerror = () => {
+        const fallbackUrl = "https://www.soundjay.com/footsteps/sounds/footsteps-4.mp3";
+        if (baseAudioRef.current && baseAudioRef.current.src !== fallbackUrl) {
+          console.log("Local audio not found, falling back to external URL.");
+          baseAudioRef.current.src = fallbackUrl;
+          baseAudioRef.current.load();
+        }
+      };
+    }
+    
+    // Play and immediately pause to unlock audio context in the browser
+    baseAudioRef.current.play().then(() => {
+      baseAudioRef.current?.pause();
+      if (baseAudioRef.current) baseAudioRef.current.currentTime = 0;
+    }).catch(err => {
+      console.log("Audio unlock deferred or failed:", err);
+    });
+    // ----------------------------
+    
     try {
       console.log('[LiveStreaming] Requesting camera access...');
       // Get webcam access
@@ -241,6 +266,15 @@ const LiveStreaming = ({ onBack }: LiveStreamingProps) => {
             }));
             
             setLastDetectionTime(new Date());
+            
+            // --- PLAY OVERLAPPING AUDIO ---
+            if (baseAudioRef.current) {
+              // Clone the node to allow overlapping sounds (e.g., fast running)
+              const audioClone = baseAudioRef.current.cloneNode() as HTMLAudioElement;
+              audioClone.volume = 1.0;
+              audioClone.play().catch(e => console.error("Audio playback failed:", e));
+            }
+            // ------------------------------
             
             // Show toast notification for detection
             toast({
